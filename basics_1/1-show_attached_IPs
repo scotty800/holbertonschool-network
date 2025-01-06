@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# This script displays all active IPv4 IPs on the machine
-
-# Use the `ip` command to display IPv4 addresses associated with active interfaces
-# Filter and format the output to only show the IPv4 addresses
-ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+# Script to show the attached IPs of the current machine
+# Install net tools for ifconfig command. "sudo apt-get install net-tools"
+ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
