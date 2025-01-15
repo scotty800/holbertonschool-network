@@ -1,0 +1,55 @@
+What Happens When You Type https://www.google.com and Press Enter?
+The journey of a simple URL in your browser is a fascinating dive into the intricate workings of the internet. Each step is crucial in delivering the content you requested. Let’s break down the process into key components:
+
+1. DNS Request
+When you type https://www.google.com and hit Enter, the first step is resolving the domain name into an IP address through the Domain Name System (DNS).
+
+    - DNS Query: Your browser checks its cache to see if it has recently resolved the IP for www.google.com. If not, it sends a request to a DNS resolver, which may be your ISP or a third-party DNS service like Google DNS or Cloudflare.
+    - DNS Response: The DNS resolver will either provide the IP address from its cache or query other DNS servers, eventually reaching the authoritative DNS server for google.com, which returns the corresponding IP address.
+
+2. TCP/IP
+Once the IP address is obtained, your browser initiates a connection to Google’s server using the Transmission Control Protocol (TCP).
+
+- TCP Handshake: A three-way handshake is performed to establish a reliable connection between your device and the server:
+
+    - SYN: Your browser sends a SYN (synchronize) packet to Google’s server.
+    - SYN-ACK: The server acknowledges with a SYN-ACK (synchronize-acknowledge) packet.
+
+    - ACK: Your browser responds with an ACK (acknowledge) packet.
+- IP Protocol: The Internet Protocol (IP) is responsible for routing the packets from your device to Google’s server across the internet.
+
+3. Firewall
+During the connection, both your local firewall and Google's network firewall ensure that the communication is secure and legitimate.
+
+- Local Firewall: Ensures that only outgoing traffic to trusted ports (like port 443 for HTTPS) is allowed.
+- Server Firewall: Google’s firewall protects against unauthorized access and malicious traffic, allowing only legitimate requests to proceed.
+
+4. HTTPS/SSL
+The connection uses HTTPS, which is HTTP over SSL/TLS for secure communication.
+
+- SSL/TLS Handshake: An SSL/TLS handshake occurs to establish a secure session:
+    - Certificate Exchange: Google’s server presents its SSL certificate to prove its identity.
+    - Session Keys: Both parties exchange keys to encrypt the communication, ensuring that data cannot be intercepted or tampered with.
+
+5. Load Balancer
+Google’s infrastructure uses load balancers to distribute incoming traffic across multiple servers to ensure high availability and reliability.
+
+- Load Balancer Role: It directs your request to an optimal server based on current load, geographic location, and server health.
+
+6. Web Server
+Your request reaches one of Google’s web servers.
+
+- Processing Request: The web server handles HTTP(S) requests, serving static content or passing dynamic requests to an application server.
+
+7. Application Server
+For dynamic content, the web server forwards the request to an application server.
+
+- Business Logic Execution: The application server processes the request using Google’s backend logic, interacting with databases and other services as needed.
+
+8. Database
+If the request requires data retrieval, the application server queries Google’s database.
+
+- Database Query: The database management system (DBMS) fetches the required data and returns it to the application server, which prepares it for the web server.
+Conclusion
+
+After processing the request, the web server sends the response back through the established connection. Your browser receives the response, rendering the content (like Google’s homepage) on your screen.
